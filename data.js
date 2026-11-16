@@ -1,5 +1,5 @@
 // NFO Desk data. The daily NFO tracker run updates ONLY this file.
-// Every entry must come from the scheme's own scheme document (SID / KIM / ISID, or the SEBI draft for "coming").
+// Every entry must come from the scheme's own scheme document (SID / KIM / ISID).
 // Dates are 'YYYY-MM-DD'. min = minimum lumpsum only. fmLead = first fund manager + count of others.
 // risk: { scale: 'MF', level: 1-6 (Low, Low to Moderate, Moderate, Moderately High, High, Very High), label }
 //    or { scale: 'SIF', level: 1-5, label: 'Risk Level N' }.
@@ -13,8 +13,5 @@ window.NFO_DATA = {
     { name: 'Mirae Asset Contra Fund', amc: 'Mirae Asset Mutual Fund', category: 'Equity, contra', segment: 'MF', type: 'Open ended', open: '2026-11-27', close: '2026-12-11', fm: 'Vrijesh Kasera', fmLead: 'Vrijesh Kasera', min: '₹5,000', risk: { scale: 'MF', level: 6, label: 'Very High' }, doc: 'https://www.miraeassetmf.co.in/docs/default-source/sid/1-sid_mirae-asset-contra-fund.pdf', docLabel: 'Scheme document (SID)' },
     { name: 'WhiteOak Capital Contra Fund', amc: 'WhiteOak Capital Mutual Fund', category: 'Equity, contra', segment: 'MF', type: 'Open ended', open: '2026-12-01', close: '2026-12-15', fm: 'Ramesh Mantri (equity); Trupti Agarwal, Dheeresh Pathak (assistant FMs, equity); Piyush Baranwal (debt); Ashish Agrawal (arbitrage)', fmLead: 'Ramesh Mantri + 4 others', min: '₹500', risk: { scale: 'MF', level: 6, label: 'Very High' }, doc: 'https://content.whiteoakamc.com/White_Oak_Capital_Contra_Fund_SID_2fc749772d.pdf', docLabel: 'Scheme document (SID)' }
   ],
-  coming: [
-    { name: 'iSIF Sector Rotation Long-Short Fund', amc: 'ICICI Prudential Mutual Fund (iSIF)', category: 'Equity long-short, SIF', fm: 'Sankaran Naren', min: '₹10 lakh', doc: 'https://www.sebi.gov.in/sebi_data/attachdocs/oct-2026/1793253168387.pdf', docLabel: 'Draft scheme document (SEBI)' },
-    { name: 'H-SIF Equity Ex-Top 100 Long-Short Fund', amc: 'HDFC Mutual Fund (H-SIF)', category: 'Equity long-short, SIF', fm: 'Chirag Setalvad, Gopal Agarwal', min: '₹10 lakh', doc: 'https://www.sebi.gov.in/sebi_data/attachdocs/nov-2026/1793958541317.pdf', docLabel: 'Draft scheme document (SEBI)' }
-  ]
+  coming: [] // only NFOs with announced dates are listed; this stays empty
 };

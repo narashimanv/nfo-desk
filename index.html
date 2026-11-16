@@ -82,7 +82,6 @@ footer p{margin:0}footer a{color:#C9D8EC}footer a:hover{color:#fff}
 <div class="stats">
 <div class="stat"><b><span class="live" style="width:10px;height:10px"></span><span id="s-open"></span></b><span>Live now</span></div>
 <div class="stat"><b id="s-soon"></b><span>Opening in the next few weeks</span></div>
-<div class="stat"><b id="s-coming"></b><span>Filed, dates awaited</span></div>
 </div>
 </section>
 </header>
@@ -107,14 +106,6 @@ footer p{margin:0}footer a{color:#C9D8EC}footer a:hover{color:#fff}
 <div id="list" class="grid"></div>
 </section>
 
-<section id="coming" class="wrap block">
-<div style="display:flex;flex-direction:column;gap:6px">
-<h2>Coming soon</h2>
-<p class="sub">Filed with SEBI. Open and close dates are not announced yet. We'll move them up the page once the fund house confirms dates.</p>
-</div>
-<div id="clist" class="grid"></div>
-</section>
-
 <section id="faq" class="wrap block" style="padding-bottom:56px">
 <h2>FAQs</h2>
 <div style="display:flex;flex-direction:column;gap:10px;max-width:860px">
@@ -129,6 +120,7 @@ footer p{margin:0}footer a{color:#C9D8EC}footer a:hover{color:#fff}
 <div class="wrap">
 <img src="assetplus-logo.png" alt="AssetPlus" style="height:24px;width:auto;align-self:flex-start">
 <p>Mutual fund investments are subject to market risks. Read all scheme related documents carefully before investing.</p>
+<p>Investments in Specialized Investment Fund involves relatively higher risk including potential loss of capital, liquidity risk and market volatility. Please read all investment strategy related documents carefully before making the investment decision.</p>
 <p>Valueplus Technologies Pvt. Ltd. (AssetPlus) is an AMFI-registered mutual fund distributor, ARN-114376.</p>
 <div style="display:flex;flex-wrap:wrap;gap:8px 24px">
 <a href="https://www.amfiindia.com">AMFI</a><a href="https://www.sebi.gov.in">SEBI</a><a href="https://scores.sebi.gov.in">SEBI SCORES</a><a href="https://smartodr.in">SMART ODR</a>
@@ -163,13 +155,11 @@ footer p{margin:0}footer a{color:#C9D8EC}footer a:hover{color:#fff}
       pct: isOpen ? Math.min(100, Math.max(4, Math.round((total - left + 1) / total * 100))) : 0 });
   });
   list.sort(function (a, b) { return a.close - b.close; });
-  var coming = data.coming.filter(function (c) { return c.doc && c.fm && c.min; });
 
   var openCount = list.filter(function (x) { return x.isOpen; }).length;
   document.getElementById('updated').textContent = 'Updated ' + fmt(today) + ' ' + today.getFullYear();
   document.getElementById('s-open').textContent = openCount;
   document.getElementById('s-soon').textContent = list.length - openCount;
-  document.getElementById('s-coming').textContent = coming.length;
 
   var MF_DIAL = '<svg viewBox="0 0 310 134" role="img" aria-label="ARIA"><g fill="none" stroke-width="22"><path d="M66.0 122.0 A84 84 0 0 1 77.3 80.0" stroke="#1B8F3A"/><path d="M77.3 80.0 A84 84 0 0 1 108.0 49.3" stroke="#7DC242"/><path d="M108.0 49.3 A84 84 0 0 1 150.0 38.0" stroke="#F5D21F"/><path d="M150.0 38.0 A84 84 0 0 1 192.0 49.3" stroke="#E9A23B"/><path d="M192.0 49.3 A84 84 0 0 1 222.7 80.0" stroke="#F07A23"/><path d="M222.7 80.0 A84 84 0 0 1 234.0 122.0" stroke="#D7261E"/></g><g font-family="Geist, -apple-system, sans-serif" font-size="10" fill="#374151"><text x="47" y="98" text-anchor="end">Low Risk</text><text x="74" y="40" text-anchor="end">Low to</text><text x="74" y="52" text-anchor="end">Moderate Risk</text><text x="122" y="18" text-anchor="end">Moderate Risk</text><text x="178" y="12">Moderately</text><text x="178" y="24">High Risk</text><text x="226" y="50">High Risk</text><text x="253" y="92">Very High</text><text x="253" y="104">Risk</text></g><line x1="150" y1="122" x2="84" y2="122" stroke="#1F2937" stroke-width="4" stroke-linecap="round" transform="rotate(ROT 150 122)"/><circle cx="150" cy="122" r="7" fill="#1F2937"/></svg>';
   var SIF_BAND = '<svg viewBox="0 0 300 64" role="img" aria-label="ARIA"><g font-family="Geist, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#374151"><text x="10" y="12">LOWER RISK</text><text x="290" y="12" text-anchor="end">HIGHER RISK</text></g><rect x="10" y="22" width="56" height="22" fill="#2E9E3E"/><rect x="66" y="22" width="56" height="22" fill="#6BBF4A"/><rect x="122" y="22" width="56" height="22" fill="#F5D45A"/><rect x="178" y="22" width="56" height="22" fill="#E8463C"/><rect x="234" y="22" width="56" height="22" fill="#8E1B1B"/><g font-family="Geist, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#FFFFFF" text-anchor="middle"><text x="38" y="37">1</text><text x="94" y="37">2</text><text x="150" y="37" fill="#6B5A12">3</text><text x="206" y="37">4</text><text x="262" y="37">5</text></g><g transform="translate(RX 0)"><circle cx="0" cy="33" r="14" fill="none" stroke="#1F2937" stroke-width="2.5"/><line x1="0" y1="47" x2="0" y2="56" stroke="#1F2937" stroke-width="2"/></g></svg>';
@@ -204,13 +194,6 @@ footer p{margin:0}footer a{color:#C9D8EC}footer a:hover{color:#fff}
       '<a class="btn share" href="' + esc(share) + '" target="_blank" rel="noopener">' + SHARE_ICON + 'Share</a></div>' +
       '</article>';
   }
-
-  document.getElementById('clist').innerHTML = coming.map(function (c) {
-    return '<article class="ccard"><span class="await">Dates awaited</span><h3 style="margin:0;font-size:17px;line-height:1.35;color:#111827">' + esc(c.name) + '</h3>' +
-      '<div class="amc">' + esc(c.amc) + ' · ' + esc(c.category) + '</div>' +
-      '<dl><div><dt>Fund manager</dt><dd>' + esc(c.fm) + '</dd></div><div><dt>Min. investment</dt><dd>' + esc(c.min) + '</dd></div></dl>' +
-      '<a class="btn doc" href="' + esc(c.doc) + '" target="_blank" rel="noopener">' + esc(c.docLabel) + '</a></article>';
-  }).join('');
 
   var filter = 'all', q = '';
   function render() {
