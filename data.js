@@ -1,0 +1,20 @@
+// NFO Desk data. The daily NFO tracker run updates ONLY this file.
+// Every entry must come from the scheme's own scheme document (SID / KIM / ISID, or the SEBI draft for "coming").
+// Dates are 'YYYY-MM-DD'. min = minimum lumpsum only. fmLead = first fund manager + count of others.
+// risk: { scale: 'MF', level: 1-6 (Low, Low to Moderate, Moderate, Moderately High, High, Very High), label }
+//    or { scale: 'SIF', level: 1-5, label: 'Risk Level N' }.
+// docLabel: 'Scheme document (SID)' / 'Scheme document (KIM)' / 'Scheme document (ISID)'.
+window.NFO_DATA = {
+  nfos: [
+    { name: 'H-SIF Hybrid Long-Short Fund', amc: 'HDFC Mutual Fund (H-SIF)', category: 'Hybrid long-short', segment: 'SIF', type: 'Interval', open: '2026-11-13', close: '2026-11-27', fm: 'Anil Bamboli, Ihab Dalwai, Paul S Parampreet, Gopal Agrawal', fmLead: 'Anil Bamboli + 3 others', min: '₹10 lakh', risk: { scale: 'SIF', level: 2, label: 'Risk Level 2' }, doc: 'https://portal.amfiindia.com/spages/S-41.pdf', docLabel: 'Scheme document (ISID)' },
+    { name: 'Abakkus Dynamic Asset Allocation Fund', amc: 'Abakkus Mutual Fund', category: 'Hybrid, dynamic asset allocation', segment: 'MF', type: 'Open ended', open: '2026-11-16', close: '2026-11-30', fm: 'Vinod Bhat, Abhishek Krishnaswami Srinivas', fmLead: 'Vinod Bhat + 1 other', min: '₹500', risk: { scale: 'MF', level: 6, label: 'Very High' }, doc: 'https://www.abakkusmf.com/uploads/Abakkus_Dynamic_Asset_Allocation_Fund_NFO_KIM_c90595e0a1.pdf', docLabel: 'Scheme document (KIM)' },
+    { name: 'Infinity Equity Long-Short Fund', amc: 'Kotak Mahindra Mutual Fund (Infinity SIF)', category: 'Equity long-short', segment: 'SIF', type: 'Open ended', open: '2026-11-17', close: '2026-12-01', fm: 'Kalpesh Jain, Rohit Tandon (equity and overseas); Abhishek Bisen (debt)', fmLead: 'Kalpesh Jain + 2 others', min: '₹10 lakh', risk: { scale: 'SIF', level: 3, label: 'Risk Level 3' }, doc: 'https://portal.amfiindia.com/spages/S-43.pdf', docLabel: 'Scheme document (ISID)' },
+    { name: 'Bajaj Finserv Business Cycle Fund', amc: 'Bajaj Finserv Mutual Fund', category: 'Equity, business cycle theme', segment: 'MF', type: 'Open ended', open: '2026-11-20', close: '2026-12-04', fm: 'Sorbh Gupta, Bharat Hegde, Siddharth Chaudhary', fmLead: 'Sorbh Gupta + 2 others', min: '₹500', risk: { scale: 'MF', level: 6, label: 'Very High' }, doc: 'https://media.bajajamc.com/wp-content/uploads/2026/11/SID-Bajaj-Finserv-Business-Cycle-Fund.pdf', docLabel: 'Scheme document (SID)' },
+    { name: 'Mirae Asset Contra Fund', amc: 'Mirae Asset Mutual Fund', category: 'Equity, contra', segment: 'MF', type: 'Open ended', open: '2026-11-27', close: '2026-12-11', fm: 'Vrijesh Kasera', fmLead: 'Vrijesh Kasera', min: '₹5,000', risk: { scale: 'MF', level: 6, label: 'Very High' }, doc: 'https://www.miraeassetmf.co.in/docs/default-source/sid/1-sid_mirae-asset-contra-fund.pdf', docLabel: 'Scheme document (SID)' },
+    { name: 'WhiteOak Capital Contra Fund', amc: 'WhiteOak Capital Mutual Fund', category: 'Equity, contra', segment: 'MF', type: 'Open ended', open: '2026-12-01', close: '2026-12-15', fm: 'Ramesh Mantri (equity); Trupti Agarwal, Dheeresh Pathak (assistant FMs, equity); Piyush Baranwal (debt); Ashish Agrawal (arbitrage)', fmLead: 'Ramesh Mantri + 4 others', min: '₹500', risk: { scale: 'MF', level: 6, label: 'Very High' }, doc: 'https://content.whiteoakamc.com/White_Oak_Capital_Contra_Fund_SID_2fc749772d.pdf', docLabel: 'Scheme document (SID)' }
+  ],
+  coming: [
+    { name: 'iSIF Sector Rotation Long-Short Fund', amc: 'ICICI Prudential Mutual Fund (iSIF)', category: 'Equity long-short, SIF', fm: 'Sankaran Naren', min: '₹10 lakh', doc: 'https://www.sebi.gov.in/sebi_data/attachdocs/oct-2026/1793253168387.pdf', docLabel: 'Draft scheme document (SEBI)' },
+    { name: 'H-SIF Equity Ex-Top 100 Long-Short Fund', amc: 'HDFC Mutual Fund (H-SIF)', category: 'Equity long-short, SIF', fm: 'Chirag Setalvad, Gopal Agarwal', min: '₹10 lakh', doc: 'https://www.sebi.gov.in/sebi_data/attachdocs/nov-2026/1793958541317.pdf', docLabel: 'Draft scheme document (SEBI)' }
+  ]
+};

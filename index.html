@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NFO Desk | AssetPlus</title>
+<meta name="description" content="New fund offers open now and upcoming, with fund managers and scheme documents.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#F5F7FA;font-family:Geist,-apple-system,'Segoe UI',sans-serif;color:#1F2937}
+a{color:#0A4E9B}a:hover{color:#083D7A}
+.wrap{max-width:1160px;margin:0 auto;padding-left:24px;padding-right:24px}
+header{background:#0A4E9B}
+nav{display:flex;flex-wrap:wrap;gap:16px 32px;align-items:center;justify-content:space-between;padding-top:16px;padding-bottom:16px}
+.hero{padding-top:48px;padding-bottom:56px;display:flex;flex-direction:column;gap:20px}
+.hero h1{margin:0;font-size:44px;line-height:1.12;font-weight:700;color:#fff}
+.hero p{margin:0;font-size:17px;line-height:1.55;color:#DCE6F3;max-width:640px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:12px;max-width:820px}
+.stat{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);border-radius:12px;padding:16px}
+.stat b{display:flex;align-items:center;gap:8px;font-size:30px;font-weight:700;color:#fff}
+.stat > span{font-size:13px;color:#DCE6F3}
+.live{display:inline-block;border-radius:50%;background:#34C759;animation:pulse 1.8s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(52,199,89,.6)}70%{box-shadow:0 0 0 6px rgba(52,199,89,0)}100%{box-shadow:0 0 0 0 rgba(52,199,89,0)}}
+@media (prefers-reduced-motion:reduce){.live{animation:none}}
+section.block{padding-top:40px;padding-bottom:24px;display:flex;flex-direction:column;gap:16px}
+h2{margin:0;font-size:26px;font-weight:700;color:#111827}
+.sub{margin:0;font-size:15px;color:#4B5563}
+.bar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+.tabs{display:flex;background:#fff;border:1px solid #E2E8F0;border-radius:10px;padding:4px;gap:4px;overflow-x:auto;max-width:100%}
+.tab{flex-shrink:0;min-height:36px;padding:0 14px;border-radius:8px;border:none;font:inherit;font-size:14px;font-weight:600;background:transparent;color:#4B5563;cursor:pointer}
+.tab:hover{background:#F1F5F9}
+.tab[aria-pressed="true"]{background:#E8EFF8;color:#0A4E9B}
+.search{width:100%;max-width:320px;flex:1 1 220px;height:44px;padding:0 14px;border:1px solid #C7CFDB;border-radius:8px;font:inherit;font-size:15px;color:#111827;background:#fff}
+.search:focus{outline:none;border-color:#0A4E9B;box-shadow:0 0 0 2px rgba(10,78,155,.25)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(440px,100%),1fr));gap:16px}
+.card{background:#fff;border:1px solid #E2E8F0;border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:14px}
+.row{display:flex;gap:8px;align-items:center;justify-content:space-between}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;border-radius:999px;padding:4px 10px}
+.chip.open{background:#E3F4EA;color:#146C3A}.chip.soon{background:#E8EFF8;color:#0A4E9B}
+.seg{font-size:12px;font-weight:600;color:#4B5563;background:#F1F5F9;border-radius:6px;padding:4px 8px}
+.card h3{margin:0;font-size:17px;line-height:1.35;font-weight:700;color:#111827}
+.amc{font-size:13px;color:#4B5563}
+.count{font-size:15px;font-weight:700;color:#111827}.count.hot{color:#C8161D}
+.period{font-size:12px;color:#4B5563}
+.track{height:6px;background:#EEF2F7;border-radius:6px;overflow:hidden}.track div{height:100%;border-radius:6px;background:#0A4E9B}.track div.hot{background:#C8161D}
+dl{margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;font-size:13px;flex-grow:1}
+dt{color:#6B7280}dd{margin:2px 0 0;color:#111827;font-weight:600}
+.risk{grid-column:1/-1}
+.riskbox{margin-top:6px;display:flex;flex-direction:column;align-items:center;gap:4px;background:#F8FAFC;border-radius:10px;padding:10px 8px}
+.riskbox svg{width:100%;max-width:300px;height:auto}
+.btns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.btn{display:inline-flex;justify-content:center;align-items:center;gap:6px;min-height:44px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;text-align:center;padding:0 10px}
+.btn.doc{border:1px solid #D5DCE6;background:#fff;color:#0A4E9B}.btn.doc:hover{background:#E8EFF8}
+.btn.share{background:#0A4E9B;color:#fff}.btn.share:hover{background:#083D7A;color:#fff}
+.btn:focus{outline:none}.btn:focus-visible{outline:2px solid #0A4E9B;outline-offset:2px}
+.empty{background:#fff;border:1px solid #E2E8F0;border-radius:16px;padding:32px;text-align:center;font-size:15px;color:#4B5563}
+.ccard{background:#fff;border:1px dashed #B8C4D6;border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:8px}
+.ccard dl{display:flex;flex-direction:column;gap:8px}
+.ccard dl div{display:flex;gap:8px}.ccard dt{min-width:104px}.ccard dd{margin:0;font-weight:400;color:#1F2937}
+.await{align-self:flex-start;font-size:12px;font-weight:600;color:#4B5563;background:#F1F5F9;border-radius:999px;padding:4px 10px}
+details{background:#fff;border:1px solid #E2E8F0;border-radius:12px;padding:16px 20px}
+summary{cursor:pointer;list-style:none;font-size:16px;font-weight:600;color:#111827}summary::-webkit-details-marker{display:none}
+details p{margin:10px 0 0;font-size:14px;line-height:1.6;color:#4B5563}
+footer{background:#0B2545;color:#C9D8EC}
+footer .wrap{padding-top:40px;padding-bottom:40px;display:flex;flex-direction:column;gap:16px;font-size:13px;line-height:1.6}
+footer p{margin:0}footer a{color:#C9D8EC}footer a:hover{color:#fff}
+@media (max-width:600px){.hero h1{font-size:34px}.wrap{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<header>
+<nav class="wrap" aria-label="Main">
+<a href="#top" style="display:flex;align-items:center"><img src="assetplus-logo.png" alt="AssetPlus" style="height:28px;width:auto"></a>
+<span style="font-size:12px;color:#DCE6F3" id="updated"></span>
+</nav>
+<section id="top" class="wrap hero">
+<h1>NFO Desk</h1>
+<p>New fund offers - Open now and upcoming along with their fund managers and scheme documents.</p>
+<div class="stats">
+<div class="stat"><b><span class="live" style="width:10px;height:10px"></span><span id="s-open"></span></b><span>Live now</span></div>
+<div class="stat"><b id="s-soon"></b><span>Opening in the next few weeks</span></div>
+<div class="stat"><b id="s-coming"></b><span>Filed, dates awaited</span></div>
+</div>
+</section>
+</header>
+
+<main>
+<section id="nfos" class="wrap block" style="padding-top:48px">
+<div style="display:flex;flex-direction:column;gap:6px">
+<h2>Upcoming NFOs</h2>
+<p class="sub">Sorted by close date. The days-left count updates every day.</p>
+</div>
+<div class="bar">
+<div class="tabs" role="group" aria-label="Filter NFOs">
+<button class="tab" type="button" data-f="all" aria-pressed="true">All</button>
+<button class="tab" type="button" data-f="open" aria-pressed="false">Open now</button>
+<button class="tab" type="button" data-f="soon" aria-pressed="false">Upcoming</button>
+<button class="tab" type="button" data-f="sif" aria-pressed="false">SIF</button>
+</div>
+<label class="sr" for="q">Search NFOs</label>
+<input id="q" class="search" type="search" placeholder="Fund, fund house or category">
+</div>
+<div id="empty" class="empty" hidden>No NFOs match that search. Try a fund house name, such as Mirae or Bajaj.</div>
+<div id="list" class="grid"></div>
+</section>
+
+<section id="coming" class="wrap block">
+<div style="display:flex;flex-direction:column;gap:6px">
+<h2>Coming soon</h2>
+<p class="sub">Filed with SEBI. Open and close dates are not announced yet. We'll move them up the page once the fund house confirms dates.</p>
+</div>
+<div id="clist" class="grid"></div>
+</section>
+
+<section id="faq" class="wrap block" style="padding-bottom:56px">
+<h2>FAQs</h2>
+<div style="display:flex;flex-direction:column;gap:10px;max-width:860px">
+<details><summary>When can clients invest after the NFO closes?</summary><p>An open-ended fund reopens for regular buying a few days after the NFO closes. The reopening date is in the scheme document.</p></details>
+<details><summary>Is a ₹10 NFO unit cheaper than an existing fund?</summary><p>No. The unit price does not make a fund cheap or expensive. What matters is the strategy, the fund manager, the costs and fit with the client's goals.</p></details>
+<details><summary>Who can invest in a SIF?</summary><p>Specialised investment funds need a minimum investment of ₹10 lakh per investor across SIF strategies of a fund house, as set by SEBI.</p></details>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="wrap">
+<img src="assetplus-logo.png" alt="AssetPlus" style="height:24px;width:auto;align-self:flex-start">
+<p>Mutual fund investments are subject to market risks. Read all scheme related documents carefully before investing. Investments in specialised investment funds involve relatively higher risk, including potential loss of capital, liquidity risk and market volatility. This page is for registered distributors and is not investment advice.</p>
+<p>Valueplus Technologies Pvt. Ltd. (AssetPlus) is an AMFI-registered mutual fund distributor, ARN-114376.</p>
+<div style="display:flex;flex-wrap:wrap;gap:8px 24px">
+<a href="https://www.amfiindia.com">AMFI</a><a href="https://www.sebi.gov.in">SEBI</a><a href="https://scores.sebi.gov.in">SEBI SCORES</a><a href="https://smartodr.in">SMART ODR</a>
+</div>
+<p style="color:#93A9C6">© 2026 Valueplus Technologies Pvt. Ltd.</p>
+</div>
+</footer>
+
+<script src="data.js"></script>
+<script>
+(function () {
+  var MON = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var DAY = 86400000;
+  var DISCLAIMER = 'Mutual fund investments are subject to market risks. Read all scheme related documents carefully before investing.';
+  var now = new Date();
+  var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  function parse(s) { var p = s.split('-'); return new Date(+p[0], +p[1] - 1, +p[2]); }
+  function fmt(x) { return x.getDate() + ' ' + MON[x.getMonth()]; }
+  function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+
+  var data = window.NFO_DATA || { nfos: [], coming: [] };
+  var list = [];
+  data.nfos.forEach(function (n) {
+    var open = parse(n.open), close = parse(n.close);
+    if (today > close) return;
+    if (!n.doc || !n.fm || !n.min || !n.risk) return; // every field on the card must come from the scheme document
+    var isOpen = today >= open;
+    var left = Math.round((close - today) / DAY) + 1;
+    var until = Math.round((open - today) / DAY);
+    var total = Math.round((close - open) / DAY) + 1;
+    list.push({ n: n, open: open, close: close, isOpen: isOpen, left: left, until: until, hot: isOpen && left <= 3,
+      pct: isOpen ? Math.min(100, Math.max(4, Math.round((total - left + 1) / total * 100))) : 0 });
+  });
+  list.sort(function (a, b) { return a.close - b.close; });
+  var coming = data.coming.filter(function (c) { return c.doc && c.fm && c.min; });
+
+  var openCount = list.filter(function (x) { return x.isOpen; }).length;
+  document.getElementById('updated').textContent = 'Updated ' + fmt(today) + ' ' + today.getFullYear();
+  document.getElementById('s-open').textContent = openCount;
+  document.getElementById('s-soon').textContent = list.length - openCount;
+  document.getElementById('s-coming').textContent = coming.length;
+
+  var MF_DIAL = '<svg viewBox="0 0 310 134" role="img" aria-label="ARIA"><g fill="none" stroke-width="22"><path d="M66.0 122.0 A84 84 0 0 1 77.3 80.0" stroke="#1B8F3A"/><path d="M77.3 80.0 A84 84 0 0 1 108.0 49.3" stroke="#7DC242"/><path d="M108.0 49.3 A84 84 0 0 1 150.0 38.0" stroke="#F5D21F"/><path d="M150.0 38.0 A84 84 0 0 1 192.0 49.3" stroke="#E9A23B"/><path d="M192.0 49.3 A84 84 0 0 1 222.7 80.0" stroke="#F07A23"/><path d="M222.7 80.0 A84 84 0 0 1 234.0 122.0" stroke="#D7261E"/></g><g font-family="Geist, -apple-system, sans-serif" font-size="10" fill="#374151"><text x="47" y="98" text-anchor="end">Low Risk</text><text x="74" y="40" text-anchor="end">Low to</text><text x="74" y="52" text-anchor="end">Moderate Risk</text><text x="122" y="18" text-anchor="end">Moderate Risk</text><text x="178" y="12">Moderately</text><text x="178" y="24">High Risk</text><text x="226" y="50">High Risk</text><text x="253" y="92">Very High</text><text x="253" y="104">Risk</text></g><line x1="150" y1="122" x2="84" y2="122" stroke="#1F2937" stroke-width="4" stroke-linecap="round" transform="rotate(ROT 150 122)"/><circle cx="150" cy="122" r="7" fill="#1F2937"/></svg>';
+  var SIF_BAND = '<svg viewBox="0 0 300 64" role="img" aria-label="ARIA"><g font-family="Geist, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#374151"><text x="10" y="12">LOWER RISK</text><text x="290" y="12" text-anchor="end">HIGHER RISK</text></g><rect x="10" y="22" width="56" height="22" fill="#2E9E3E"/><rect x="66" y="22" width="56" height="22" fill="#6BBF4A"/><rect x="122" y="22" width="56" height="22" fill="#F5D45A"/><rect x="178" y="22" width="56" height="22" fill="#E8463C"/><rect x="234" y="22" width="56" height="22" fill="#8E1B1B"/><g font-family="Geist, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#FFFFFF" text-anchor="middle"><text x="38" y="37">1</text><text x="94" y="37">2</text><text x="150" y="37" fill="#6B5A12">3</text><text x="206" y="37">4</text><text x="262" y="37">5</text></g><g transform="translate(RX 0)"><circle cx="0" cy="33" r="14" fill="none" stroke="#1F2937" stroke-width="2.5"/><line x1="0" y1="47" x2="0" y2="56" stroke="#1F2937" stroke-width="2"/></g></svg>';
+  var SHARE_ICON = '<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>';
+
+  function riskHtml(r) {
+    var aria = esc('Riskometer: ' + r.label);
+    if (r.scale === 'SIF') {
+      return SIF_BAND.replace('ARIA', aria).replace('RX', String(10 + (r.level - 0.5) * 56)) +
+        '<span style="font-size:13px;font-weight:700;color:#111827">Risk band: ' + esc(r.label) + '</span>';
+    }
+    return MF_DIAL.replace('ARIA', aria).replace('ROT', ((r.level - 0.5) * 30).toFixed(1)) +
+      '<span style="font-size:13px;font-weight:700;color:#111827">The risk of the scheme is ' + esc(r.label) + '</span>';
+  }
+
+  function card(x) {
+    var n = x.n;
+    var shareText = 'New fund offer: ' + n.name + ' (' + n.amc + ')\nNFO period: ' + fmt(x.open) + ' – ' + fmt(x.close) + ' ' + x.close.getFullYear() +
+      '\nMinimum investment: ' + n.min + '\nScheme document: ' + n.doc + '\n\n' + DISCLAIMER;
+    var share = 'https://api.whatsapp.com/send/?text=' + encodeURIComponent(shareText) + '&type=custom_url&app_absent=0';
+    var days = x.isOpen ? (x.left === 1 ? 'Closes today' : 'Closes in ' + x.left + ' days') : 'Opens in ' + (x.until === 1 ? '1 day' : x.until + ' days');
+    return '<article class="card">' +
+      '<div class="row"><span class="chip ' + (x.isOpen ? 'open' : 'soon') + '">' + (x.isOpen ? '<span class="live" style="width:6px;height:6px"></span>Open now' : 'Opens ' + fmt(x.open)) + '</span>' +
+      '<span class="seg">' + esc(n.segment === 'SIF' ? 'SIF · ' + n.type : n.type) + '</span></div>' +
+      '<div style="display:flex;flex-direction:column;gap:4px"><h3>' + esc(n.name) + '</h3><div class="amc">' + esc(n.amc) + ' · ' + esc(n.category) + '</div></div>' +
+      '<div style="display:flex;flex-direction:column;gap:6px"><div class="row" style="align-items:baseline"><span class="count' + (x.hot ? ' hot' : '') + '">' + days + '</span><span class="period">' + fmt(x.open) + ' – ' + fmt(x.close) + '</span></div>' +
+      '<div class="track"><div class="' + (x.hot ? 'hot' : '') + '" style="width:' + x.pct + '%"></div></div></div>' +
+      '<dl><div><dt>Min. investment</dt><dd>' + esc(n.min) + '</dd></div>' +
+      '<div><dt>Fund manager</dt><dd title="' + esc(n.fm) + '">' + esc(n.fmLead || n.fm) + '</dd></div>' +
+      '<div class="risk"><dt>Riskometer</dt><dd class="riskbox">' + riskHtml(n.risk) + '</dd></div></dl>' +
+      '<div class="btns"><a class="btn doc" href="' + esc(n.doc) + '" target="_blank" rel="noopener">' + esc(n.docLabel) + '</a>' +
+      '<a class="btn share" href="' + esc(share) + '" target="_blank" rel="noopener">' + SHARE_ICON + 'Share</a></div>' +
+      '</article>';
+  }
+
+  document.getElementById('clist').innerHTML = coming.map(function (c) {
+    return '<article class="ccard"><span class="await">Dates awaited</span><h3 style="margin:0;font-size:17px;line-height:1.35;color:#111827">' + esc(c.name) + '</h3>' +
+      '<div class="amc">' + esc(c.amc) + ' · ' + esc(c.category) + '</div>' +
+      '<dl><div><dt>Fund manager</dt><dd>' + esc(c.fm) + '</dd></div><div><dt>Min. investment</dt><dd>' + esc(c.min) + '</dd></div></dl>' +
+      '<a class="btn doc" href="' + esc(c.doc) + '" target="_blank" rel="noopener">' + esc(c.docLabel) + '</a></article>';
+  }).join('');
+
+  var filter = 'all', q = '';
+  function render() {
+    var shown = list.filter(function (x) {
+      if (filter === 'open' && !x.isOpen) return false;
+      if (filter === 'soon' && x.isOpen) return false;
+      if (filter === 'sif' && x.n.segment !== 'SIF') return false;
+      var hay = (x.n.name + ' ' + x.n.amc + ' ' + x.n.category + ' ' + x.n.segment).toLowerCase();
+      return !q || hay.indexOf(q) !== -1;
+    });
+    document.getElementById('list').innerHTML = shown.map(card).join('');
+    document.getElementById('empty').hidden = shown.length > 0;
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('.tab'), function (b) {
+    b.addEventListener('click', function () {
+      filter = b.getAttribute('data-f');
+      Array.prototype.forEach.call(document.querySelectorAll('.tab'), function (t) { t.setAttribute('aria-pressed', t === b ? 'true' : 'false'); });
+      render();
+    });
+  });
+  document.getElementById('q').addEventListener('input', function (e) { q = e.target.value.trim().toLowerCase(); render(); });
+  render();
+})();
+</script>
+</body>
+</html>
